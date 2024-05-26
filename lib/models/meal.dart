@@ -3,7 +3,7 @@ enum Complexity {
   simple,
   challenging,
   hard,
-}
+} // enum is a way to create a set of named values
 
 enum Affordability {
   affordable,
@@ -26,7 +26,8 @@ class Meal {
     required this.isLactoseFree,
     required this.isVegan,
     required this.isVegetarian,
-  });
+  }); // this is a constuctor , which initializes a meal object with given properties.
+  // here required means that this property must be provided when creating a meal object.
 
   final String id;
   final List<String> categories;

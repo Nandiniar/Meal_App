@@ -2,17 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:meal_2/models/category.dart';
 
 class CategoryGridItem extends StatelessWidget {
-  final Category category;
 
   const CategoryGridItem({
-    Key? key,
+    super.key,
     required this.category,
-  }) : super(key: key);
+    required this.onSelectCategory,
+
+});
+  final Category category;
+
+  final void Function() onSelectCategory;
+
 
   @override
   Widget build(BuildContext context) {
     return  InkWell(
-      onTap:() {},
+      onTap:onSelectCategory,
       splashColor:Theme.of(context).primaryColor,
       borderRadius:BorderRadius.circular(16),
 

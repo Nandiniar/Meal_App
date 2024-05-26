@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:meal_2/screens/meals.dart';
 import 'screens/categories.dart';
+import 'package:meal_2/data/dummy_dart.dart';
 
 final theme = ThemeData(
   useMaterial3: true,
@@ -22,7 +24,8 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
         theme: theme,
-        home: const CategoriesScreen(),
+        home: const CategoriesScreen(),// from here
+      // list of dummyMeals from dummy_dart.dart will be shown
     );
   }
 }
