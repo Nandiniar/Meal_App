@@ -1,6 +1,8 @@
 
 // yeh wala page tab ke liye ha , jab hum jo first page ha pick your category wala  usme se koi category like pizza, burger chose karenge toh uske andar ka
 // jo content dekhega uske liye
+
+
 import 'package:flutter/material.dart';
 import 'package:meal_2/models/meal.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -9,11 +11,12 @@ import 'package:meal_2/widgets/meal_item_trait.dart';
 
 class MealItem extends StatelessWidget { // this means that MealItem is a subclass of Stateless Widget , here stateless widget
   // is a super class and MealItem is a subclass
-  const MealItem({super.key, required this.meal});// this line is a consturctor for MealItem widget , here super refers to the parent class
+  const MealItem({super.key, required this.meal,required this.onSelectMeal});// this line is a consturctor for MealItem widget , here super refers to the parent class
   // key is a parameter in the parent class constructor, This key identify and manage the widget in the widget tree
 
   final Meal meal;// here Meal is a custom data type which is defined in models/meal.dart. It blueprint for creating meal objects
   // here meal is the name of variable ,it is the instance of Meal data type.
+   final void Function(BuildContext context,Meal meal) onSelectMeal;
 
   String get complexityText {// this is a getter function in dart
     return meal.complexity.name[0].toUpperCase() +  // here it will return the name of complexity of meal object (here if
@@ -34,7 +37,9 @@ class MealItem extends StatelessWidget { // this means that MealItem is a subcla
       clipBehavior: Clip.hardEdge,
       elevation: 2,// elevation means it add shadow below the card for the raised effect.
       child: InkWell(
-        onTap: () {},
+        onTap: (){
+          onSelectMeal(context,meal);
+        },
         child: Stack(
           children: [
             FadeInImage(

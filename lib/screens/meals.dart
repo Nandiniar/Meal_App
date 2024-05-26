@@ -2,6 +2,7 @@
 // whenver we will tap on like different meals ice cream, roll ect
 import 'package:flutter/material.dart';
 import 'package:meal_2/models/meal.dart';
+import 'package:meal_2/screens/meal_details.dart';
 import 'package:meal_2/widgets/meal_item.dart';
 import 'package:meal_2/widgets/meal_item.dart';
 
@@ -10,6 +11,9 @@ class MealsScreen extends StatelessWidget {
   required this.meals});
 final String title;
 final List<Meal>meals;
+void selectMeal(BuildContext context,Meal meal){
+  Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>MealDetailsScreen(meal: meal),),);
+}
 
   @override
   Widget build(BuildContext context)  {
@@ -39,7 +43,11 @@ content=Center(
     if(meals.isNotEmpty){
       content=ListView.builder(//listview is a scrollable list
         itemCount :meals.length,
-        itemBuilder:(ctx,index)=>MealItem(meal: meals[index]),
+        itemBuilder:(ctx,index)=>MealItem(meal: meals[index],
+          onSelectMeal:(context,meal){
+selectMeal(context, meal);
+        },
+        ),
 
       );
     }
